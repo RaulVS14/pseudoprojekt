@@ -1,6 +1,6 @@
 <?php
-
 $eesNimi='Raul';
 $pereNimi='Muser';
-echo $eesNimi." ".$pereNimi;
+$vanus=26;
+echo $eesNimi." ".$pereNimi."(".$vanus.")";
 ?>
