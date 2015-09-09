@@ -1,7 +1,7 @@
 <?php
 
 $isik=(object) array('eesnimi'=>'Raul', 'perenimi'=>'Muser','vanus'=>26,'sugu'=>'mees');
-$eesnimi_algab_vokaaliga=false;
+$eesnimi_algab_vokaaliga=strstr("AEIOUÕÄÜ",$isik->{'eesnimi'}[0]);
 
 echo $isik->{'eesnimi'}." ".$isik->{'perenimi'}." (".$isik->{'vanus'}.") ".$isik->{'sugu'}."<br>";
 
