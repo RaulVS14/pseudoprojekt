@@ -30,6 +30,11 @@
     $(".varv").click(function(){
         $("body").css("background-color",$(this).text());
     })
+    $(document).ready(function(){
+        $(document).on("contextmenu",function(){
+            return false;
+        });
+    })
 </script>
 </body>
 </html>
