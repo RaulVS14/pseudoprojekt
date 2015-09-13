@@ -2,6 +2,7 @@
 <html lang="et">
 <head>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <title>Kliendipoolsed</title>
 </head>
 <body>
@@ -19,9 +20,7 @@
         window.location="http://www.khk.ee";
     }
     function asendaKoer(){
-        document.addEventListener("click",function(){
-            document.getElementById("pilt").src="http://etaarifa.co.ke/wp-content/uploads/2015/08/black-dog-pics-765x510.jpg";
-        });
+        $("#pilt").attr("src","http://etaarifa.co.ke/wp-content/uploads/2015/08/black-dog-pics-765x510.jpg");
     }
 </script>
 </body>
