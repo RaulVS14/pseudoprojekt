@@ -12,9 +12,9 @@
     <br>
     <img id="pilt" onclick="asendaKoer()" width="200" height="140" src="http://s.hswstatic.com/gif/whiskers-sam.jpg">
     <br>
-    <button onclick="$('body').css('background-color','red');">Red</button>
-    <button onclick="$('body').css('background-color','blue');">Blue</button>
-    <button onclick="$('body').css('background-color','green');">Green</button>
+    <button class="varv">Red</button>
+    <button class="varv">Blue</button>
+    <button class="varv">Green</button>
 <script>
 
     function tereMaailm(){
@@ -27,6 +27,9 @@
     function asendaKoer(){
         $("#pilt").attr("src","http://etaarifa.co.ke/wp-content/uploads/2015/08/black-dog-pics-765x510.jpg");
     }
+    $(".varv").click(function(){
+        $("body").css("background-color",$(this).text());
+    })
 </script>
 </body>
 </html>
