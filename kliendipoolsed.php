@@ -11,7 +11,12 @@
     <a href="http://www.khk.ee" onclick="alert('Jääme siia!');return false;">Jääme siia</a>
     <br>
     <img id="pilt" onclick="asendaKoer()" width="200" height="140" src="http://s.hswstatic.com/gif/whiskers-sam.jpg">
+    <br>
+    <button onclick="$('body').css('background-color','red');">Red</button>
+    <button onclick="$('body').css('background-color','blue');">Blue</button>
+    <button onclick="$('body').css('background-color','green');">Green</button>
 <script>
+
     function tereMaailm(){
         alert('Tere, Maailm!');
     }
