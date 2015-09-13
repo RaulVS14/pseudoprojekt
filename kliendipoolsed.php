@@ -16,10 +16,15 @@
     <button class="varv">Blue</button>
     <button class="varv">Green</button>
     <button id="rklick">Luba parem klõps</button>
+    <br>
+    <button id="kustuta">Kaduv kass</button>
 <script>
     var pklick=false;
     $("#rklick").bind("click",function(){
         return pklick=true;
+    });
+    $("#kustuta").click(function(){
+        $("img").toggle();
     });
     function tereMaailm(){
         alert('Tere, Maailm!');
