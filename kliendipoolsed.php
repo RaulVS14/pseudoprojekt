@@ -15,8 +15,12 @@
     <button class="varv">Red</button>
     <button class="varv">Blue</button>
     <button class="varv">Green</button>
+    <button id="rklick">Luba parem klõps</button>
 <script>
-
+    var pklick=false;
+    $("#rklick").bind("click",function(){
+        return pklick=true;
+    });
     function tereMaailm(){
         alert('Tere, Maailm!');
     }
@@ -32,7 +36,7 @@
     })
     $(document).ready(function(){
         $(document).on("contextmenu",function(){
-            return false;
+            return pklick;
         });
     })
 </script>
