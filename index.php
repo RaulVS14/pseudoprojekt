@@ -1,9 +1,6 @@
 <?php
-$servername="127.0.0.1";
-$username="root";
-$password="";
-$dbname="blog";
-$db=mysqli_connect($servername, $username, $password,$dbname) or die(mysqli_error($db));
+require('config.php');
+$db=mysqli_connect(DATABASE_HOSTNAME, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_DATABASE) or die(mysqli_error($db));
 mysqli_query($db,"SET NAMES 'utf8'");
 $q= mysqli_query($db,"SELECT * FROM POSTS JOIN AUTHORS");
 while($row=mysqli_fetch_assoc($q)){
@@ -105,13 +102,13 @@ while($row=mysqli_fetch_assoc($q)){
                 <div class="post-preview">
                     <a href="post.html">
                         <h2 class="post-title">
-                            <?=$post['title']?>
+                            <?=$post['post_title']?>
                         </h2>
                         <h3 class="post-subtitle">
-                            <?=$post['description']?>
+                            <?=$post['post_description']?>
                         </h3>
                     </a>
-                    <p class="post-meta">Posted by <a href="#"><?=$post['name']?></a> on <?=$post['date']?></p>
+                    <p class="post-meta">Posted by <a href="#"><?=$post['author_name']?></a> on <?=$post['post_created']?></p>
                 </div>
             </div>
         </div>
