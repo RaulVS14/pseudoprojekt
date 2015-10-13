@@ -1,6 +1,6 @@
 <?php
 require('config.php');
-$db=mysqli_connect(DATABASE_HOSTNAME, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_DATABASE) or die(mysqli_error($db));
+$db=mysqli_connect(DATABASE_HOSTNAME, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_DATABASE) or die('Could not connect!');
 mysqli_query($db,"SET NAMES 'utf8'");
 $q= mysqli_query($db,"SELECT * FROM POSTS JOIN AUTHORS");
 while($row=mysqli_fetch_assoc($q)){
