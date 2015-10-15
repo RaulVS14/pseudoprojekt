@@ -12,7 +12,7 @@
     }else{
         echo "Faili ei leitud. Luuakse data.csv fail!";
         $file=fopen($filename,"w");
-        file_put_contents($filename,"Toomas;Test;toomas.test@email.com\nPriit;Proov;priit.proov@email.com\n");
+        //file_put_contents($filename,"Toomas;Test;toomas.test@email.com\nPriit;Proov;priit.proov@email.com\n");
         fclose($file);
     }
 ?>
