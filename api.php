@@ -1,4 +1,13 @@
 <?php
+    if(isset($_GET['emailvalidation'])){
+        $meil=$_GET['emailvalidation'];
+        if(checkdnsrr(array_pop(explode("@",$meil)),"MX")){
+            exit("Emaili domeen eksisteerib.");
+        }
+        else{
+            exit("Emaili domeeni ei ole olemas.");
+        }
+    }
     $filename="data.csv";
     if(file_exists($filename)){
         $file=fopen($filename,"r");
