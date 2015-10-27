@@ -4,32 +4,46 @@
     <meta charset="UTF-8">
     <title>Ilmateade</title>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+    <script type="text/javascript" src="chosen/chosen.jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="chosen/chosen.css"/>
 </head>
 <body>
-<select style="width: 100px;" id="ilmateade-dropdown">
+<script type="text/javascript">
+
+</script>
+<select style="width: 100px;" id="ilmateade-dropdown" class="chosen">
     <option selected="selected"></option>
 </select>
 <button onclick="Javascript:getWeather()">Ilmateade</button>
 <p id="weatherReport"></p>
 <script type="text/javascript">
-    $(document).ready(
-            $.get("http://cors.io/?u=http://openweathermap.org/help/city_list.txt", function (data) {
-                var dataString = data.split("\n");
-                var result = [];
-                var headers = dataString[0].split("\t");
-                for (var i = 1; i < dataString.length - 1; i++) {
-                    var obj = {};
-                    var currentline = dataString[i].split("\t");
-                    obj[headers[1]] = currentline[1];
-                    result.push(obj);
-                }
-                $.each(result, function (index, item) {
-                    $('#ilmateade-dropdown').append(
-                            $('<option></option>').val(item["nm"]).text(item["nm"])
-                    );
-                });
-            })
-    );
+    $.get("http://cors.io/?u=http://openweathermap.org/help/city_list.txt", function (data) {
+        var dataString = data.split("\n");
+        var result = [];
+        var headers = dataString[0].split("\t");
+        for (var i = 1; i < dataString.length - 1; i++) {
+            var obj = {};
+            var currentline = dataString[i].split("\t");
+            for(var j=0;j<headers.length;j++){
+                obj[headers[j]] = currentline[j];
+            }
+
+            //*Sorteerida Eesti riigi järgi
+            if(obj.countryCode=="EE"){
+                result.push(obj);
+            }
+            /*
+            result.push(obj);
+            */
+        }
+        $.each(result, function (index, item) {
+            console.log(item["countryCode"])
+                $('#ilmateade-dropdown').append(
+                        $('<option></option>').val(item["nm"]).text(item["nm"])
+                );
+        });
+        $(".chosen").chosen({width:"25%"});
+    });
     function getWeather() {
         var inputField = document.getElementById('ilmateade-dropdown');
         var inputVal = inputField.value;
