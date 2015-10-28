@@ -48,7 +48,7 @@
         var inputField = document.getElementById('ilmateade-dropdown');
         var inputVal = inputField.value;
         $.get("http://api.openweathermap.org/data/2.5/weather?q=" + inputVal + "&appid=935452dfa4f9ecca6b0d749ae7e84ca4", function (data) {
-            document.getElementById('weatherReport').innerHTML = data.weather[0].description;
+            document.getElementById('weatherReport').innerHTML = data.weather[0].description.toString().toLocaleLowerCase();
         });
     }
 </script>
