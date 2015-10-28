@@ -8,15 +8,14 @@
     <link type="text/css" rel="stylesheet" href="chosen/chosen.css"/>
 </head>
 <body>
-<script type="text/javascript">
 
-</script>
 <select style="width: 100px;" id="ilmateade-dropdown" class="chosen">
     <option selected="selected"></option>
 </select>
 <button onclick="Javascript:getWeather()">Ilmateade</button>
 <p id="weatherReport"></p>
 <script type="text/javascript">
+    $(".chosen").chosen({width:"25%"});
     $.get("http://cors.io/?u=http://openweathermap.org/help/city_list.txt", function (data) {
         var dataString = data.split("\n");
         var result = [];
@@ -37,12 +36,13 @@
             */
         }
         $.each(result, function (index, item) {
-            console.log(item["countryCode"])
                 $('#ilmateade-dropdown').append(
                         $('<option></option>').val(item["nm"]).text(item["nm"])
                 );
+            $('#ilmateade-dropdown').trigger('chosen:updated');
         });
-        $(".chosen").chosen({width:"25%"});
+
+
     });
     function getWeather() {
         var inputField = document.getElementById('ilmateade-dropdown');
