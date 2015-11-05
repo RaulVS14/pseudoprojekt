@@ -3,19 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Ilmateade</title>
-    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="tablesorter/jquery.tablesorter.js"></script>
     <script type="text/javascript" src="chosen/chosen.jquery.min.js"></script>
+
     <link type="text/css" rel="stylesheet" href="chosen/chosen.css"/>
-    <style>
-        table,td,tr,th{
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding:5px;
-        }
-        th{
-            width:150px;
-        }
-    </style>
+    <link rel="stylesheet" href="tablesorter/themes/blue/style.css">
 </head>
 <body>
 
@@ -24,8 +18,22 @@
 </select>
 <button onclick="Javascript:getWeather()">Ilmateade</button>
 <p id="weatherReport"></p>
-<table id="ilmaTabel"></table>
+<table id="ilmaTabel" class="tablesorter">
+    <thead>
+        <tr>
+            <th>Linnanimi</th>
+            <th>Ilmateade</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
 <script type="text/javascript">
+    $(document).ready(function()
+            {
+                $("table").tablesorter();
+            }
+    );
     $(".chosen").chosen({width:"25%"});
     if(localStorage&&localStorage.getItem('linnad')){
         chosenAndtabel(JSON.parse(localStorage.getItem('linnad')));
@@ -66,9 +74,11 @@
         });
         for(var i=0; i< result.length;i++){
             $.get("http://api.openweathermap.org/data/2.5/weather?q=" + result[i].nm + "&appid=935452dfa4f9ecca6b0d749ae7e84ca4", function (data) {
-                $('#ilmaTabel').append('<tr><td>'+ data.name.toString() +'</td><td>'+data.weather[0].description.toString().toLocaleLowerCase()+'</td></tr>');
+                $('tbody').append('<tr><td>'+ data.name.toString() +'</td><td>'+data.weather[0].description.toString().toLocaleLowerCase()+'</td></tr>');
+                $("table").trigger("update");
             });
         }
+
     }
     function getWeather() {
         var inputField = document.getElementById('ilmateade-dropdown');
